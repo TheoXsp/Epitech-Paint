@@ -7,32 +7,16 @@
 
 #include "core.hpp"
 
-class FrameBuffer {
-    public:
-        FrameBuffer(int width, int height, sf::Color defaultColor);
-        std::vector<sf::Uint8>& getFrameBuffer();
-        void setPixel(int x, int y, sf::Color color);
-        int getWidth() const;
-        int getHeight() const;
-        virtual ~FrameBuffer() = default;
-
-    private:
-        std::vector<sf::Uint8> _frameBuffer;
-        int _width;
-        int _height;
-};
-
 class Frame {
     public:
-        Frame(FrameBuffer frameBuffer);
+        Frame(int width, int height);
         sf::Sprite getFrameSprite() const;
-        void updatePixels(int x, int y, sf::Color color);
+        void updatePixels(std::vector<sf::Uint8> pixels, int x, int y, short size);
         virtual ~Frame() = default;
 
     private:
         sf::Sprite _frameSprite;
         sf::Texture _frameTexture;
-        FrameBuffer _frameBuffer;
 };
 
 #endif //PAINT_FRAMES_HPP

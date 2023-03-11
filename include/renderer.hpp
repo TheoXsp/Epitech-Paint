@@ -11,6 +11,7 @@
 class Renderer {
     public:
         Renderer(int width, int height, const std::string& title);
+        std::vector<sf::Uint8> createUpdateFrame() const;
         void eventHandler(Frame &currentFrame);
         void run();
         virtual ~Renderer() = default;
@@ -19,6 +20,10 @@ class Renderer {
         sf::RenderWindow _window;
         sf::Event _event;
         std::vector<Frame> _frames;
+        short _penSize;
+        short _alpha;
+        bool _smooth;
+        sf::Color _penColor;
 };
 
 #endif //PAINT_RENDERER_HPP
