@@ -4,7 +4,7 @@
 
 #include "renderer.hpp"
 
-Renderer::Renderer(int width, int height, const std::string& title) : _window(sf::VideoMode(width, height), title) {
+Renderer::Renderer(int width, int height, const std::string& title) : _window(sf::VideoMode(width, height), title, sf::Style::Close) {
     _frames.emplace_back(width, height);
     _window.setFramerateLimit(144);
     _penSize = 5;
